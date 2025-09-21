@@ -7,9 +7,6 @@ on:
 jobs:
   compile:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      security-events: write   # Required for dependency graph submission
 
     steps:
       - uses: actions/checkout@v4
@@ -23,7 +20,3 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-
-      # Optional: Uploads the full dependency graph to GitHub
-      - name: Update dependency graph
-        uses: advanced-security/maven-dependency-submission-action@v3
